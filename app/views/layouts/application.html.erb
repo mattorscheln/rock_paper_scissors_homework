@@ -5,8 +5,70 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
 </head>
+
 <body>
+<div class="container">
+  <hr>
+
+  <div class="row">
+    <div class="col-md-4">
+      <a href="/play/rock" class="btn btn-warning btn-block btn-lg">Play rock.</a>
+    </div>
+
+    <div class="col-md-4">
+      <a href="/play/paper" class="btn btn-warning btn-block btn-lg">Play paper.</a>
+    </div>
+
+    <div class="col-md-4">
+      <a href="/play/scissors" class="btn btn-warning btn-block btn-lg">Play scissors.</a>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+  <div class="col-md-8">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <h3 class="panel-title text-center">You played <%= @user_move %>.</h3>
+          </div>
+          <div class="panel-body">
+            <img src="/assets/images/<%= @user_move %>.png" class="img-responsive">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="panel panel-danger">
+          <div class="panel-heading">
+            <h3 class="panel-title text-center">The computer played <%= @computer_move %>.</h3>
+          </div>
+          <div class="panel-body">
+            <img src="/assets/images/<%= @computer_move %>.png" class="img-responsive">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="well">
+          <h1 class="text-center">You <%= @outcome %>!</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h5 class="panel-title">Summary</h5>
+      </div>
+
 
 <%= yield %>
 
