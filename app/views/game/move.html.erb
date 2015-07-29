@@ -9,30 +9,30 @@
 
         <tr>
           <td>rock</td>
-          <td>3</td>
-          <td>0</td>
-          <td>1</td>
+          <td><%= @all_moves.where(user_move: 'rock', user_wins: 1).count %></td>
+          <td><%= @all_moves.where(user_move: 'rock', computer_wins: 1).count %></td>
+          <td><%= @all_moves.where(user_move: 'rock', tie: 1).count %></td>
         </tr>
 
         <tr>
           <td>paper</td>
-          <td>0</td>
-          <td>1</td>
-          <td>1</td>
+          <td><%= @all_moves.where(user_move: 'paper', user_wins: 1).count %></td>
+          <td><%= @all_moves.where(user_move: 'paper', computer_wins: 1).count %></td>
+          <td><%= @all_moves.where(user_move: 'paper', tie: 1).count %></td>
         </tr>
 
         <tr>
           <td>scissors</td>
-          <td>1</td>
-          <td>2</td>
-          <td>2</td>
+          <td><%= @all_moves.where(user_move: 'scissors', user_wins: 1).count %></td>
+          <td><%= @all_moves.where(user_move: 'scissors', computer_wins: 1).count %></td>
+          <td><%= @all_moves.where(user_move: 'scissors', tie: 1).count %></td>
         </tr>
 
         <tr>
           <th>Total</th>
-          <th>4</th>
-          <th>3</th>
-          <th>4</th>
+          <th><%= @all_moves.sum(:user_wins) %></th>
+          <th><%= @all_moves.sum(:computer_wins) %></th>
+          <th><%= @all_moves.sum(:tie) %></th>
         </tr>
       </table>
     </div>
@@ -42,7 +42,7 @@
       <div class="panel-heading">
         <h5 class="panel-title">
           Complete history
-          (11)
+          (<%= @all_moves.count %>)
         </h5>
       </div>
 
@@ -55,7 +55,27 @@
           <th>Tie</th>
         </tr>
 
+		  <% @all_moves.each do |result| %>
+		    <tr>
+		      <td>
+		        <%= result.user_move %>
+		      </td>
 
+		      <td>
+		        <%= result.computer_move %>
+		      </td>
+
+		      <td>
+		        <%= result.user_wins %>
+		      </td>
+
+		      <td>
+		        <%= result.computer_wins %>
+		      </td>
+
+		      <td>
+		        <%= result.tie %>
+		      </td>
 
 		    </tr>
 		  <% end %>

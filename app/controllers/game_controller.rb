@@ -49,6 +49,7 @@ class GameController < ApplicationController
     # Retrieving all past moves in order to draw the log
     @all_moves = Move.all
 
+
     render("move.html.erb")
   end
 
